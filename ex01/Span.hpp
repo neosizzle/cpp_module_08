@@ -29,9 +29,10 @@ class Span
 			int	sizeLeft;
 
 			sizeLeft = this->_size - this->_elems_stored;
-			if (sizeLeft <= 0 || std::distance(end, begin) > sizeLeft)
+			if (sizeLeft <= 0 || std::distance(begin, end) > sizeLeft)
 				throw Span::IndexOverflowException();
 			this->_vect.insert(this->_vect.begin(), begin, end);
+			this->_elems_stored += std::distance(begin, end);
 		}
 
 		class IndexOverflowException : public std::exception

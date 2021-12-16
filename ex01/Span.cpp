@@ -20,6 +20,8 @@ int	Span::shortestSpan()//sort then find min diff
 
 	if (this->_elems_stored <= 1)
 		throw Span::NoSpanException();
+	if (std::equal(this->_vect.begin() + 1, this->_vect.end(), this->_vect.begin()) )//all equal
+		throw Span::NoSpanException();
 	for (int num : this->_vect)
 		temp.push_back(num);
 	std::sort(temp.begin(), temp.end());
@@ -31,8 +33,6 @@ int	Span::shortestSpan()//sort then find min diff
 		if (curr_diff < mindiff)
 			mindiff = curr_diff;
 	}
-	if (mindiff == 0)
-		throw Span::NoSpanException();
 	return mindiff;
 }
 int	Span::longestSpan()//minmax

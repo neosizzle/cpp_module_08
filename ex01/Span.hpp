@@ -3,7 +3,7 @@
 #include <vector>
 #include <algorithm>
 #include <stdexcept>
-
+#include <iostream>
 class Span
 {
 	private:
@@ -20,8 +20,19 @@ class Span
 		Span &operator = (const Span &span);
 
 		void	addNumber(int number);
-		std::vector<int>::iterator	shortestSpan();//sort then find min diff
-		std::vector<int>::iterator	largestSpan();//minmax
+		int	shortestSpan();
+		int	longestSpan();
+
+		template <typename Iterator>
+		void	addNumber(Iterator begin, Iterator end)
+		{
+			int	sizeLeft;
+
+			sizeLeft = this->_size - this->_elems_stored;
+			if (sizeLeft <= 0 || std::distance(end, begin) > sizeLeft)
+				throw Span::IndexOverflowException();
+			this->_vect.insert(this->_vect.begin(), begin, end);
+		}
 
 		class IndexOverflowException : public std::exception
 		{

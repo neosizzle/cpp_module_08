@@ -14,6 +14,7 @@ void	Span::addNumber(int number)
 int	Span::shortestSpan()//sort then find min diff
 {
 	std::vector<int> temp;
+	std::vector<int>::iterator iter;
 	int	mindiff;
 	unsigned int i;
 	int	curr_diff;
@@ -22,8 +23,12 @@ int	Span::shortestSpan()//sort then find min diff
 		throw Span::NoSpanException();
 	if (std::equal(this->_vect.begin() + 1, this->_vect.end(), this->_vect.begin()) )//all equal
 		throw Span::NoSpanException();
-	for (int num : this->_vect)
-		temp.push_back(num);
+	iter = this->_vect.begin();
+	while (iter != this->_vect.end())
+	{
+		temp.push_back(*iter);
+		++iter;
+	}
 	std::sort(temp.begin(), temp.end());
 	i = 0;
 	mindiff = abs(this->_vect.at(0) - this->_vect.at(1));

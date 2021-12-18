@@ -45,13 +45,13 @@ int	main()
 	print("===============SIMPLE NUMBERS ITERATORS TEST==============");
 		std::vector<int> vector;
 		vector.push_back(2000);
-		std::cout << "Added: " << 2000 << std::endl;
+		std::cout << "Added: " << 2000 << " into above span" << std::endl;
 		vector.push_back(250);
-		std::cout << "Added: " << 250 << std::endl;
+		std::cout << "Added: " << 250 << " into above span" << std::endl;
 		vector.push_back(-2200);
-		std::cout << "Added: " << -2200 << std::endl;
+		std::cout << "Added: " << -2200 << " into above span" << std::endl;
 		vector.push_back(249);
-		std::cout << "Added: " << 249 << std::endl;
+		std::cout << "Added: " << 249 << " into above span" << std::endl;
 		sp.addNumber(vector.begin(), vector.end());
 		std::cout << " -> Shortest span found is: " << sp.shortestSpan() << std::endl;
 		std::cout << " -> Longest span found is: " << sp.longestSpan() << std::endl;
